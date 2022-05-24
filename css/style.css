@@ -1,0 +1,282 @@
+/* Base Rules */
+* {
+  box-sizing: border-box;
+}
+/* html {
+  scroll-behavior: smooth;
+} */
+body {
+  background: rgb(136, 203, 171);
+  background: linear-gradient(
+    0deg,
+    rgb(136, 203, 171, 1) 0%,
+    rgb(0, 13, 60, 1) 100%
+  );
+  margin: 0;
+  font-family: "Merriweather", serif;
+  color: #fff;
+}
+h1 {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 7em;
+  margin: 2em 4rem 1em;
+}
+@media only screen and (max-width: 35em) {
+  h1 {
+    font-size: 3em;
+    margin: 2em 1rem;
+  }
+}
+h2 {
+  border-bottom: 1px solid #cccc11;
+  font-family: "Oxygen", sans-serif;
+  font-size: 2em;
+  padding-bottom: 10px;
+}
+p {
+  line-height: 1.6em;
+  color: #eee;
+}
+
+/* ---- Layout Rules ---- */
+main {
+  margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+  min-height: 40vh;
+  padding-top: 3em;
+}
+
+section {
+  position: relative;
+  min-height: 80vh;
+}
+
+/* Header Stlye */
+.page-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgb(119, 119, 119, 70%);
+  z-index: 5;
+}
+
+/* Navigation Stlye */
+.navbar-menu {
+  overflow: hidden;
+}
+.navbar-menu ul {
+  padding-left: 0;
+  margin: 0;
+  text-align: right;
+}
+
+.navbar-menu li {
+  display: inline-block;
+}
+
+.navbar-menu .nav-link {
+  display: block;
+  padding: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-menu .nav-link:hover {
+  background: #fff;
+  color: #333;
+  transition: ease 0.3s all;
+}
+
+.navbar-click {
+  background: #333;
+}
+
+/* Responsive Menu */
+/* https://www.w3schools.com/howto/howto_js_topnav_responsive.asp */
+.navbar-menu a.menu {
+  display: none;
+}
+
+@media only screen and (max-width: 35em) {
+  .navbar-menu li {
+    display: none;
+  }
+
+  .navbar-menu a.menu {
+    float: right;
+    display: block;
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .navbar-menu.responsive li {
+    position: relative;
+  }
+
+  .navbar-menu.responsive a.menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .navbar-menu.responsive li {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+/* Footer Styles */
+footer {
+  background: #000;
+  padding: 3em;
+  color: #fff;
+}
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing-container {
+  max-width: 50em;
+  padding: 4em;
+}
+
+@media only screen and (max-width: 35em) {
+  .landing-container {
+    padding: 1em;
+    text-align: left;
+  }
+}
+
+section:nth-of-type(even) .landing-container {
+  margin-right: 0;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing-container::before {
+  content: "";
+  background: rgba(255, 255, 255, 0.187);
+  position: absolute;
+  z-index: -5;
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  opacity: 0;
+  transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing-container::before {
+  content: "";
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  position: absolute;
+  top: 3em;
+  right: 3em;
+  z-index: -5;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  opacity: 0;
+  transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing-container::after {
+  content: "";
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -5;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  opacity: 0;
+  transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing-container::after {
+  content: "";
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  position: absolute;
+  right: 20vw;
+  bottom: -5em;
+  z-index: -5;
+  width: 15vh;
+  height: 15vh;
+  border-radius: 50%;
+  opacity: 0;
+  transition: ease 0.5s all;
+}
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.active-class {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+section.active-class .landing-container::before {
+  opacity: 1;
+  animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.active-class .landing-container::after {
+  opacity: 1;
+  animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) translate(-1em) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translate(-1em) rotate(-360deg);
+  }
+}
+
+/* Button Style */
+.scroll-to-top {
+  position: fixed;
+  bottom: -122px;
+  right: 20px;
+  color: var(--orange);
+  cursor: pointer;
+  transition: 0.5s;
+  /* display: none; */
+}
+
+@media only screen and (max-width: 35em) {
+  .scroll-to-top {
+    right: 0;
+    font-size: 13px;
+  }
+}
+.scroll-to-top.show {
+  bottom: 10px;
+}
